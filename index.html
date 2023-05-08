@@ -8,9 +8,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form onsubmit='return validate()' action="records.html">
-  <div> <input type="text" id="name" placeholder="name"></div>
-   <div><input type="password" id="password" placeholder="password"></div>
+    <form onsubmit='return validate()' action="">
+  <div>
+     <input type="text" id="name" placeholder="name"  ><br>
+    <span id="error1" style="color: red;visibility:hidden;">invalid</span><div></div>
+  </div>
+   <div>
+      <input type="password" id="password" placeholder="password"><br>
+      <span id="error2" style="color: red;visibility:hidden;">invalid</span>
+   </div>
    <div><input  id="submit" type="submit"></div>
 </form>
     <script src="/script.js"></script>
