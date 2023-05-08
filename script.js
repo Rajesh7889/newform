@@ -1,54 +1,109 @@
-   let submit=document.getElementById('submit');
-      /*function validate(){
-    let error1=document.getElementById('error1');
-    let error2=document.getElementById('error2');
-    let name=document.getElementById('name');
-    let password=document.getElementById('password');
-   
-    
-    
-    }
-    if(password.value.trim()=='') {
-        error2.style.visibility='visible';
-        error2.innerHTML='*please enter password';
-        password.style.border='solid 2px red';
-        return false;
-    }else if(password.value.length<5){
-        error2.innerHTML='*length of password must be greater than 5';
-        password.style.border='solid 2px red';
-        return false;
-    }else{
-        error2.innerHTML='<br>';
-        error2.style.visibility='disable';
-        password.style.border='solid 2px green';
-        submit.disabled=false;
-        return true;
-    }}*/
-    letform=document.getElementById('form');
-     form.addEventListener('submit',(e)=>{
-    e.preventDefault();
-})
-   let para=document.querySelectorAll('.values');
-   let error= document.querySelectorAll('.error');
+    let submit=document.getElementById('submit');
+    let form=document.getElementById('form');
+    let para=document.querySelectorAll('.values');
+    let error= document.querySelectorAll('.error');
+    let records={};
+     //perventing default submition..
+    form.addEventListener('submit',(e)=>{
+         e.preventDefault();
+     })
+  
+  //empty fields check....
    function check(){
     for(let i=0;i<para.length;i++){
        if(para[i].value.trim()==''){
          error= document.querySelectorAll('.error')[i];
-        para[i].style.border='solid 2px red';
-     error.innerHTML='*please fill details';
-     submit.disabled=true;
+         para[i].style.border='solid 2px red';
+         error.innerHTML='*please fill details';
+         submit.disabled=true;
+       }
     }
    }
-}
+  //name validation...
    function check1(){
-    let name=para[0].value;
-   if(name.length<2){
-     error=document.querySelectorAll('.error')[0];
-    error.innerHTML='*enter a valid name';
-    return false;
-}else {
-    error.innerHTML= '<br>';
-    para[0].style.border='solid 2px green';
-    submit.disabled=false;
-   }
-}
+       let name=para[0].value;
+       if(name.length<2){
+          error=document.querySelectorAll('.error')[0];
+          error.innerHTML='*enter a valid name';
+          return false;
+       }else {
+          error.innerHTML= '<br>';
+          para[0].style.border='solid 2px green';
+          submit.disabled=false;
+       }
+    }
+   //password validation...
+    function check2(){
+        let name=para[1].value;
+        if(name.length<5){
+           error=document.querySelectorAll('.error')[1];
+           error.innerHTML='*password length must be <5..';
+           return false;
+        }else {
+           error.innerHTML= '<br>';
+           para[1].style.border='solid 2px green';
+           submit.disabled=false;
+        }
+    }
+    //email validation...
+    function check3(){
+        let name=para[2].value;
+        if(name.length<5){
+           error=document.querySelectorAll('.error')[2];
+           error.innerHTML='*enter a valid email..';
+           return false;
+        }else {
+           error.innerHTML= '<br>';
+           para[2].style.border='solid 2px green';
+           submit.disabled=false;
+        }
+    }
+     //submiting the values...
+       function submition(){
+            records={
+                  Name:para[0].value,
+                  password:para[1].value,
+                  email:para[2].value,
+                    }
+           let webtask = localStorage.getItem("details");
+             if(webtask == null){
+                 taskobj = [];
+             }else {
+                 taskobj = JSON.parse(webtask);
+             }
+             taskobj.push(records);
+             console.log(taskobj);
+             localStorage.setItem("details",JSON.stringify(taskobj));
+             alert('Your information saved successfully');
+            
+     }
+     //retriving the records from local storage...
+     function showdata(){
+        let retrived=JSON.parse(localStorage.getItem('details'));
+        let display=document.querySelectorAll('#show');
+        let table=`<tr>
+                      <th>Name</th>
+                      <th>passowd</th>
+                      <th>email</th>`;
+        display[0].innerHTML= table;
+        for(let i = 0;i<retrived.length;i++){
+           console.log(retrived[i]['Name']);
+           table+=`<tr>
+            <td>${retrived[i]['Name']} </td>
+            <td>${retrived[i]['password']}</td>
+            <td>${retrived[i]['email']}</td>`;
+            /*<td>${retrived[i]['gender']}</td>
+           
+            <td>${retrived[i]['email']}</td>
+           
+            <td>${retrived[i]['number']}</td>
+            <td>${retrived[i]['address']}</td>
+            <td>${retrived[i]['language']}</td>
+            </tr>`;/*`Firstname : ${New.fname} <br>
+         Lastname : ${New.lname} <br> Gender : ${New.gender}<br>Email:${New.email}<br>
+         Password:${New.password}<br> mobile-number:${New.number}$Address:${New.address}<br> Language:${New.language}`;
+         */display[0].innerHTML=table;
+        }
+    }
+
+        
