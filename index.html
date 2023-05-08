@@ -8,17 +8,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form onsubmit='return validate()' action="">
+    <form id="form"  onsubmit='return validate()' action="">
   <div>
-     <input type="text" id="name" placeholder="name"  ><br>
-    <span id="error1" style="color: red;visibility:hidden;">invalid</span><div></div>
+     <input type="text" onkeyup="check1()" class='values' id="name" placeholder="name"  ><br>
+    <span id="error1"class='error' style="color: red;"><br></span><div></div>
   </div>
    <div>
-      <input type="password" id="password" placeholder="password"><br>
-      <span id="error2" style="color: red;visibility:hidden;">invalid</span>
+      <input type="password"class='values' id="password" placeholder="password"><br>
+      <span id="error2"  class='error'style="color: red;"><br></span>
    </div>
-   <div><input  id="submit" type="submit"></div>
+   <div><input  onclick='check()' id="submit" type="submit"></div>
 </form>
-    <script src="/script.js"></script>
+    <script src="/newform/script.js"></script>
 </body>
 </html>
