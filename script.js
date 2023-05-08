@@ -45,7 +45,7 @@
            submit.disabled=false;
         }
     }
-    //email validation...
+    //email validation
     function check3(){
         let name=para[2].value;
         if(name.length<5){
