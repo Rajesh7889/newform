@@ -8,44 +8,51 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form id="form"  onsubmit='submition()' action="records.html">
-      <div>
-              <h3>Registation form</h3>
-      </div>   
-             <div>
-                  <input type="text" onkeyup="check1()" class='values' id="name" placeholder="name"  ><br>
-                  <span id="error1"class='error' style="color: red;"><br></span><div></div>
-             </div>
-             <div>
-                   <input type="password"class='values' onkeyup="check2()" id="password" placeholder="password"><br>
-                   <span id="error2"  class='error'style="color: red;"><br></span>
-             </div>
-             <div>
-                  <input type="text"class='values' onkeyup="check3()" id="email" placeholder="email"><br>
-                  <span id="error3"  class='error'style="color: red;"><br></span>
-             </div>
-             <div>
-                  <input type="text" onkeyup="check4()" class='values' id="address" placeholder="address"  ><br>
-                  <span id="error4"  class='error' style="color: red;"><br></span>
-             </div>
-             <div>
-               <input type="text" onkeyup="check5()" class='values' id="number" placeholder="mobile number"  ><br>
-               <span id="error5"  class='error' style="color: red;"><br></span>
-             </div>
-             <div>
-               <label for="gender">Male</label>
-                  <input type="radio" id="male"  name="gender" value="male"><label for="male">Male</label>
-                  <input type="radio" id="female" name='gender'value='female' ><label for="female">female</label>
-             </div>
-             
-             <div>
-               <input type="checkbox" class="values"><span >:the information filled above is right..</span>
-             </div>
-             <div>
-                   <input  onclick='check()' id="submit" type="submit">
-             </div>
-</form>
+     <div id="outer">
+              <div>
 
+              </div>
+       <div id="inner">
+
+                <form id="form"  onsubmit='submition()' action="records.html">
+                     <div class="enteries">
+                          <h3>Registation form</h3>
+                     </div>   
+                     <div class="enteries">
+                          <input type="text" onkeyup="check1()" class='values' id="name" placeholder="name"  ><br>
+                          <span id="error1"class='error' style="color: red;"><br></span><div></div>
+                     </div>
+                     <div class="enteries">
+                          <input type="password"class='values' onkeyup="check2()" id="password" placeholder="password"><br>
+                          <span id="error2"  class='error'style="color: red;"><br></span>
+                     </div>
+                     <div class="enteries">
+                          <input type="text"class='values' onkeyup="check3()" id="email" placeholder="email"><br>
+                          <span id="error3"  class='error'style="color: red;"><br></span>
+                     </div>
+                     <div class="enteries">
+                          <input type="text" onkeyup="check4()" class='values' id="address" placeholder="address"  ><br>
+                          <span id="error4"  class='error' style="color: red;"><br></span>
+                     </div>
+                     <div class="enteries">
+                          <input type="text" onkeyup="check5()" class='values' id="number" placeholder="mobile number"  ><br>
+                          <span id="error5"  class='error' style="color: red;"><br></span>
+                     </div>
+                     <div class="enteries">
+                          <label for="gender">Male</label>
+                          <input type="radio" id="male"  name="gender" value="male"><label for="male">Male</label>
+                          <input type="radio" id="female" name='gender'value='female' ><label for="female">female</label>
+                     </div>
+                  
+                     <div class="enteries">
+                          <input type="checkbox" class="values"><span >:the information filled above is right..</span>
+                     </div>
+                     <div class="enteries">
+                          <input  onclick='check()' id="submit" type="submit">
+                     </div>
+                </form>
+        </div>
+     </div>  
  
 <script src="/newform/script.js"></script>
 </body>

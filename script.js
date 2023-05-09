@@ -19,7 +19,7 @@
    function check1(){
        let name=para[0].value;
        let chk=/^[A-Za-z]+$/;
-       if(name.match(chk) && name.length<2){
+       if(name.match(chk) && name.length>2){
          error.innerHTML= '<br>';
          para[0].style.border='solid 2px green';
          submit.disabled=false;
@@ -32,7 +32,7 @@
    //password validation...
     function check2(){
         let name=para[1].value;
-        let chk =/^[A-Za-z0-9]$/;
+        let chk =/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*]).{8,}$/;
         if(name.match(chk)){
          error.innerHTML= '<br>';
          para[1].style.border='solid 2px green';
@@ -90,12 +90,15 @@
   
      //submiting the values...
        function submition(){
+         let gen=document.querySelector('input[name="gender"]:checked');
             records={
                   Name:para[0].value,
                   password:para[1].value,
                   email:para[2].value,
                   address:para[3].value,
-                 
+                  number:para[4].value,
+                  gender:gen.value,
+                  checked:para[5].value,
                     }
            let webtask = localStorage.getItem("details");
              if(webtask == null){
@@ -111,7 +114,9 @@
              para[1].value='';
              para[2].value='';
              para[3].value='';
-            
+             para[4].value='';
+             gen.value='';
+             para[5].value=false;
      }
      //retriving the records from local storage...
      let retrived=JSON.parse(localStorage.getItem('details'));
@@ -121,7 +126,10 @@
                       <th>Name</th>
                       <th>passowd</th>
                       <th>email</th>
-                      <th>address</th>`;
+                      <th>gender</th>
+                      <th>address</th>
+                      <th>number</th>
+                       <th>checked</th>`;
         display[0].innerHTML= table;
         for(let i = 0;i<retrived.length;i++){
            console.log(retrived[i]['Name']);
@@ -129,10 +137,12 @@
             <td>${retrived[i]['Name']} </td>
             <td>${retrived[i]['password']}</td>
             <td>${retrived[i]['email']}</td>
-            <td>${retrived[i]['address']}</td>`;
-            /*<td>${retrived[i]['gender']}</td>
+            <td>${retrived[i]['gender']}</td>
+            <td>${retrived[i]['address']}</td>
             <td>${retrived[i]['number']}</td>
-            <td>${retrived[i]['language']}</td>
+            <td>${retrived[i]['checked']}</td>`;
+            
+            /*<td>${retrived[i]['language']}</td>
             </tr>`;/*`Firstname : ${New.fname} <br>
          Lastname : ${New.lname} <br> Gender : ${New.gender}<br>Email:${New.email}<br>
          Password:${New.password}<br> mobile-number:${New.number}$Address:${New.address}<br> Language:${New.language}`;
@@ -152,18 +162,22 @@
                       <th>Name</th>
                       <th>passowd</th>
                       <th>email</th>
-                      <th>address</th>`;
+                      <th>address</th>
+                      <th>number<th>
+                      <th>gender</th>
+                      <th>checked</th>`;
             display[0].innerHTML= table;
             for(let i = 0;i<retrived.length;i++){
                if(retrived[i]['Name'].match(regex)){
-                      if(retrived[i]['Name']==regex){
-                        alert('hello');
-                      }
+                      
                        table+=`<tr>
                        <td>${retrived[i]['Name']} </td>
                        <td>${retrived[i]['password']}</td>
                        <td>${retrived[i]['email']}</td>
-                       <th>${retrived[i]['address']}</td>`;
+                       <th>${retrived[i]['address']}</td>
+                       <td>${retrived[i]['number']}</td>
+                       <td>${retrived[i]['gender']}</td>
+                       <td>${retrived[i]['checked']}</td>`;
                         display[0].innerHTML=table;
                }
             }
