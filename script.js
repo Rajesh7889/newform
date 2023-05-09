@@ -4,10 +4,7 @@
     let error= document.querySelectorAll('.error');
     let records={};
      //perventing default submition..
-    form.addEventListener('submit',(e)=>{
-         e.preventDefault();
-     })
-  
+   
   //empty fields check....
    function check(){
     for(let i=0;i<para.length;i++){
@@ -75,12 +72,15 @@
              console.log(taskobj);
              localStorage.setItem("details",JSON.stringify(taskobj));
              alert('Your information saved successfully');
+             para[0].value='';
+             para[1].value='';
+             para[2].value='';
             
      }
      //retriving the records from local storage...
-     function showdata(){
-        let retrived=JSON.parse(localStorage.getItem('details'));
+     let retrived=JSON.parse(localStorage.getItem('details'));
         let display=document.querySelectorAll('#show');
+     function showdata(){
         let table=`<tr>
                       <th>Name</th>
                       <th>passowd</th>
@@ -106,4 +106,28 @@
         }
     }
 
+        //search entery...
         
+         let searchbar=document.getElementById('searchbar');
+        function find(){
+         searchbar.style.visibility='visible';
+        }
+        function search(){
+         let regex=new RegExp(searchbar.value,'gi');
+         let table=`<tr>
+                      <th>Name</th>
+                      <th>passowd</th>
+                      <th>email</th>`;
+        display[0].innerHTML= table;
+        for(let i = 0;i<retrived.length;i++){
+        // let value=retrived[i][Name];
+         if(retrived[i]['Name'].match(regex)){
+           console.log(retrived[i]['Name']);
+           table+=`<tr>
+            <td>${retrived[i]['Name']} </td>
+            <td>${retrived[i]['password']}</td>
+            <td>${retrived[i]['email']}</td>`;
+            display[0].innerHTML=table;
+          }
+         }
+      }
