@@ -18,54 +18,76 @@
   //name validation...
    function check1(){
        let name=para[0].value;
-       if(name.length<2){
-          error=document.querySelectorAll('.error')[0];
-          error.innerHTML='*enter a valid name';
-          return false;
+       let chk=/^[A-Za-z]+$/;
+       if(name.match(chk) && name.length<2){
+         error.innerHTML= '<br>';
+         para[0].style.border='solid 2px green';
+         submit.disabled=false;
        }else {
-          error.innerHTML= '<br>';
-          para[0].style.border='solid 2px green';
-          submit.disabled=false;
+        error=document.querySelectorAll('.error')[0];
+         error.innerHTML='*enter a valid name';
+         return false;
        }
     }
    //password validation...
     function check2(){
         let name=para[1].value;
-        if(name.length<5){
-           error=document.querySelectorAll('.error')[1];
-           error.innerHTML='*password length must be <5..';
-           return false;
+        let chk =/^[A-Za-z0-9]$/;
+        if(name.match(chk)){
+         error.innerHTML= '<br>';
+         para[1].style.border='solid 2px green';
+         submit.disabled=false; 
         }else {
-           error.innerHTML= '<br>';
-           para[1].style.border='solid 2px green';
-           submit.disabled=false;
+          error=document.querySelectorAll('.error')[1];
+           error.innerHTML='*Give a strong password..';
+           return false;
         }
     }
     //email validation
     function check3(){
         let name=para[2].value;
-        if(name.length<5){
-           error=document.querySelectorAll('.error')[2];
+        let chk=/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+        if(name.match(chk)){
+         error.innerHTML= '<br>';
+         para[2].style.border='solid 2px green';
+         submit.disabled=false;
+        }else {
+         error=document.querySelectorAll('.error')[2];
            error.innerHTML='*enter a valid email..';
            return false;
-        }else {
-           error.innerHTML= '<br>';
-           para[2].style.border='solid 2px green';
-           submit.disabled=false;
         }
     }
+    //address validation...
     function check4(){
       let name=para[3].value;
-      if(name.length<5){
+      if(name.length<10){
          error=document.querySelectorAll('.error')[3];
-         error.innerHTML='*enter a valid email..';
+         error.innerHTML='*enter full address..';
          return false;
       }else {
          error.innerHTML= '<br>';
          para[3].style.border='solid 2px green';
          submit.disabled=false;
       }
-  }
+  } 
+   //mobile number validation....
+       function check5(){
+          let name= para[4].value;
+          if(isNaN(name)){
+            error=document.querySelectorAll('.error')[4];
+            error.innerHTML='*enter a numeric values..';
+            return false;  
+          }else if( name.length<10||name.length>10){
+            error=document.querySelectorAll('.error')[4];
+            error.innerHTML='*enter a10 digit number..';
+              return false;
+           }else {
+             error.innerHTML= '<br>';
+             para[4].style.border='solid 2px green';
+             submit.disabled=false;
+            }
+         }
+  
      //submiting the values...
        function submition(){
             records={
