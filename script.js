@@ -163,7 +163,7 @@
                       <th>passowd</th>
                       <th>email</th>
                       <th>address</th>
-                      <th>number<th>
+                      <th>number</th>
                       <th>gender</th>
                       <th>checked</th>`;
             display[0].innerHTML= table;
