@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div id="main">
+    <div class="main">
         <div id="containor">
             <div class="operfield">
                 <div id="operat">
@@ -27,14 +27,17 @@
                  </div>
                 </div>
            </div> 
-           <div class="operfield">
-                        <input class="opr" id="searchbar" onkeyup="search()" type="text" placeholder="search..." style="visibility: hidden;" >
-                        <input  class="update" onclick='updatte()' id="update" type="button" value="update" style="visibility: hidden;"><br>
-                 <div id="records">
-                         <table class="opr"id="edit1" border="1" style="border-collapse: collapse;"></table>
-                         <table class="opr"id="show" border="1" style="border-collapse: collapse;"></table>
+           
+               <div class="operfield2">
+                        <input class="opr1" id="searchbar" onkeyup="search()" type="text" placeholder="search..." style="visibility: hidden;" >
+                       <div class="0pr1"></div> <input  onclick='updatte()' id="update" type="button" value="update" style="visibility: hidden;"><br>
+                    </div>
+                    <div id="records">
+                         <table class="opr1"id="edit1" border="1" style="border-collapse: collapse; border-color: rgb(1, 12, 12);"></table>
+                         <table class="opr1"id="show" border="1" style="border-collapse: collapse; border-color: rgb(1, 12, 12);"></table>
                   </div>
-         </div>
+                
+         
        </div>
     </div>                
     <script src="/newform/script.js"></script>
