@@ -10,33 +10,31 @@
 <body>
     <div id="main">
         <div id="containor">
-            <div id="header">
+            <div class="operfield">
+                <div id="operat">
                  <div class="operator">
-                     <input  onclick='showdata()' id="shows" type="button" value="show">
+                     <input class="opr" onclick='showdata()' id="shows" type="button" value="show">
                  </div>
                  <div class="operator">
-                    <input  onclick='deleteall()' id="deleteall" type="button" value="Delete-all">
+                    <input class="opr" onclick='deleteall()' id="deleteall" type="button" value="Delete-all">
                 </div>
                 
                  <div class="operator">
-                     <input  id="search" onclick="find()" type="button" value="search">
+                     <input class="opr" id="search" onclick="find()" type="button" value="search">
                  </div>
                  <div class="operator">
-                     <input  id="add" onclick="window.location.href='index.html'" type="button" value="Add record">
+                     <input class="opr" id="add" onclick="window.location.href='index.html'" type="button" value="Add record">
                  </div>
+                </div>
            </div> 
-           <div id="body">
-                 <input  id="searchbar" onkeyup="search()" type="text" placeholder="search..." style="visibility: hidden;" >
-           </div>
-           <div id="uptodate" >
-            <div class="operator">
-            <input  onclick='updatte()' id="update" type="button" value="update" style="visibility: hidden;"><br>
-            </div>
-             <table id="edit1" border="1" style="border-collapse: collapse;"></table>
-            </div>
-           <div id="records">
-                 <table id="show" border="1" style="border-collapse: collapse;"></table>
-           </div>
+           <div class="operfield">
+                        <input class="opr" id="searchbar" onkeyup="search()" type="text" placeholder="search..." style="visibility: hidden;" >
+                        <input  class="update" onclick='updatte()' id="update" type="button" value="update" style="visibility: hidden;"><br>
+                 <div id="records">
+                         <table class="opr"id="edit1" border="1" style="border-collapse: collapse;"></table>
+                         <table class="opr"id="show" border="1" style="border-collapse: collapse;"></table>
+                  </div>
+         </div>
        </div>
     </div>                
     <script src="/newform/script.js"></script>

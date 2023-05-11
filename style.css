@@ -74,7 +74,19 @@ input[type=password]{
     
 }
 
-.showop{
-    margin-top: 0%;
-    margin-left: 40%;
+.operfield{
+    background-color: aquamarine;
+    width: 90%;
+    margin:5% auto 5%;
+    height:70%;
+}
+#operat{
+    display:flex;
+}
+.operator{
+    width:25%
+    
+}
+.opr{
+    width: 100%;
 }

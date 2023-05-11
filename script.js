@@ -145,11 +145,7 @@
             <td><input type="button" id="edit" onclick='updation(${i})'  value='edit'>
             <input type="button" id="delete" onclick='deletion(${i})' value='delete'></td>`;
             
-            /*<td>${retrived[i]['language']}</td>
-            </tr>`;/*`Firstname : ${New.fname} <br>
-         Lastname : ${New.lname} <br> Gender : ${New.gender}<br>Email:${New.email}<br>
-         Password:${New.password}<br> mobile-number:${New.number}$Address:${New.address}<br> Language:${New.language}`;
-         */display[0].innerHTML=table;
+           display[0].innerHTML=table;
         }
     }
 
@@ -161,49 +157,35 @@
         }
         function search(){
             let regex=new RegExp(searchbar.value,'g');
-            let table=`<tr>
+             let table=`<tr>
                       <th>Name</th>
                       <th>password</th>
                       <th>email</th>
+                      <th>gender</th>
                       <th>address</th>
                       <th>number</th>
-                      <th>gender</th>
-                      <th>checked</th></tr>`;
-            display[0].innerHTML= table;
-            for(let i = 0;i<retrived.length;i++){
-               if(retrived[i]['Name'].match(regex)){
-                      
-                       table+=`<tr>
-                       <td>${retrived[i]['Name']} </td>
-                       <td>${retrived[i]['password']}</td>
-                       <td>${retrived[i]['email']}</td>
-                       <th>${retrived[i]['address']}</td>
-                       <td>${retrived[i]['number']}</td>
-                       <td>${retrived[i]['gender']}</td>
-                       <td>${retrived[i]['checked']}</td></tr>`;
-                        display[0].innerHTML=table;
-               }
-            }
+                       <th>checked</th>
+                       <th>operation</th>`;
+        display[0].innerHTML= table;
+        for(let i = 0;i<retrived.length;i++){
+         if(retrived[i]['Name'].match(regex)){
+           table+=`<tr>
+            <td>${retrived[i]['Name']} </td>
+            <td>${retrived[i]['password']}</td>
+            <td>${retrived[i]['email']}</td>
+            <td>${retrived[i]['gender']}</td>
+            <td>${retrived[i]['address']}</td>
+            <td>${retrived[i]['number']}</td>
+            <td>${retrived[i]['checked']}</td>
+            <td><input type="button" id="edit" onclick='updation(${i})'  value='edit'>
+            <input type="button" id="delete" onclick='deletion(${i})' value='delete'></td>`;
+            
+            
+         display[0].innerHTML=table;}
+        }
+          
          }
-  /*//deletion .....
-  function deletion(index){
-   console.log(index);
-   let index=NaN;
-    let regex=document.getElementById('searchbar').value;
-    console.log(regex);
-            for(let i = 0;i<retrived.length;i++){
-            if(regex==''){
-               exit;
-            }else if(retrived[i]['Name']==regex){
-                   index=i;
-                  }
-              
-               retrived.splice(index,1)
-               
-               localStorage.setItem("details",JSON.stringify(retrived));
-               showdata();
-            }
-         }*/ 
+ 
    //deletion .....
   function deletion(index){
           retrived.splice(index,1)
@@ -219,11 +201,11 @@
 
    //updation of records...
   
-
+   let upate=document.getElementById('update');
    let display1=document.querySelectorAll('#edit1');
      function updation(index){
       show.style.visibility='hidden';
-      let upate=document.getElementById('update');
+      edit1.style.visibility='visible';
       upate.style.visibility='visible';
      
       let table=`<tr>
@@ -263,6 +245,27 @@
      //displaying updated values on the screen...
       function updatte(){
       show.style.visibility='visible';
+      edit1.style.visibility='hidden';
+      upate.style.visibility='hidden';
       localStorage.setItem("details",JSON.stringify(retrived));
       showdata();
      }
+     /*//deletion .....
+  function deletion(index){
+   console.log(index);
+   let index=NaN;
+    let regex=document.getElementById('searchbar').value;
+    console.log(regex);
+            for(let i = 0;i<retrived.length;i++){
+            if(regex==''){
+               exit;
+            }else if(retrived[i]['Name']==regex){
+                   index=i;
+                  }
+              
+               retrived.splice(index,1)
+               
+               localStorage.setItem("details",JSON.stringify(retrived));
+               showdata();
+            }
+         }*/ 
