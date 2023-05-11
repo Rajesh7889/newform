@@ -15,8 +15,9 @@
                      <input  onclick='showdata()' id="shows" type="button" value="show">
                  </div>
                  <div class="operator">
-                     <input  id="delete" onclick="deletion()" type="button" value="delete..">
-                 </div>
+                    <input  onclick='deleteall()' id="deleteall" type="button" value="Delete-all">
+                </div>
+                
                  <div class="operator">
                      <input  id="search" onclick="find()" type="button" value="search">
                  </div>
@@ -27,8 +28,14 @@
            <div id="body">
                  <input  id="searchbar" onkeyup="search()" type="text" placeholder="search..." style="visibility: hidden;" >
            </div>
+           <div id="uptodate" >
+            <div class="operator">
+            <input  onclick='updatte()' id="update" type="button" value="update" style="visibility: hidden;"><br>
+            </div>
+             <table id="edit1" border="1" style="border-collapse: collapse;"></table>
+            </div>
            <div id="records">
-                 <table id="show" border="1" ></table>
+                 <table id="show" border="1" style="border-collapse: collapse;"></table>
            </div>
        </div>
     </div>                

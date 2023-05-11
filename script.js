@@ -99,7 +99,7 @@
                   number:para[4].value,
                   gender:gen.value,
                   checked:para[5].value,
-                    }
+                    };
            let webtask = localStorage.getItem("details");
              if(webtask == null){
                  taskobj = [];
@@ -124,15 +124,16 @@
      function showdata(){
         let table=`<tr>
                       <th>Name</th>
-                      <th>passowd</th>
+                      <th>password</th>
                       <th>email</th>
                       <th>gender</th>
                       <th>address</th>
                       <th>number</th>
-                       <th>checked</th>`;
+                       <th>checked</th>
+                       <th>operation</th>`;
         display[0].innerHTML= table;
         for(let i = 0;i<retrived.length;i++){
-           console.log(retrived[i]['Name']);
+           
            table+=`<tr>
             <td>${retrived[i]['Name']} </td>
             <td>${retrived[i]['password']}</td>
@@ -140,7 +141,9 @@
             <td>${retrived[i]['gender']}</td>
             <td>${retrived[i]['address']}</td>
             <td>${retrived[i]['number']}</td>
-            <td>${retrived[i]['checked']}</td>`;
+            <td>${retrived[i]['checked']}</td>
+            <td><input type="button" id="edit" onclick='updation(${i})'  value='edit'>
+            <input type="button" id="delete" onclick='deletion(${i})' value='delete'></td>`;
             
             /*<td>${retrived[i]['language']}</td>
             </tr>`;/*`Firstname : ${New.fname} <br>
@@ -157,15 +160,15 @@
          searchbar.style.visibility='visible';
         }
         function search(){
-            let regex=new RegExp(searchbar.value,'gi');
+            let regex=new RegExp(searchbar.value,'g');
             let table=`<tr>
                       <th>Name</th>
-                      <th>passowd</th>
+                      <th>password</th>
                       <th>email</th>
                       <th>address</th>
                       <th>number</th>
                       <th>gender</th>
-                      <th>checked</th>`;
+                      <th>checked</th></tr>`;
             display[0].innerHTML= table;
             for(let i = 0;i<retrived.length;i++){
                if(retrived[i]['Name'].match(regex)){
@@ -177,45 +180,89 @@
                        <th>${retrived[i]['address']}</td>
                        <td>${retrived[i]['number']}</td>
                        <td>${retrived[i]['gender']}</td>
-                       <td>${retrived[i]['checked']}</td>`;
+                       <td>${retrived[i]['checked']}</td></tr>`;
                         display[0].innerHTML=table;
                }
             }
          }
-  //deletion .....
-  function deletion(){
-   let index='';
+  /*//deletion .....
+  function deletion(index){
+   console.log(index);
+   let index=NaN;
     let regex=document.getElementById('searchbar').value;
     console.log(regex);
             for(let i = 0;i<retrived.length;i++){
-             //  if(retrived[i]['Name'].match(regex)){
-                   if(retrived[i]['Name']==regex){
-                  
-                  index=i;
-                    retrived.splice(index,1);}
-              // }
+            if(regex==''){
+               exit;
+            }else if(retrived[i]['Name']==regex){
+                   index=i;
+                  }
+              
+               retrived.splice(index,1)
                
                localStorage.setItem("details",JSON.stringify(retrived));
                showdata();
             }
-  
-      
-   }
+         }*/ 
+   //deletion .....
+  function deletion(index){
+          retrived.splice(index,1)
+          localStorage.setItem("details",JSON.stringify(retrived));
+          showdata();
+  }
+   //deletion .....
+  function deleteall(){
+   retrived=[];
+   localStorage.setItem("details",JSON.stringify(retrived));
+   showdata();
+}
+
    //updation of records...
-   function update(){
+  
+
+   let display1=document.querySelectorAll('#edit1');
+     function updation(index){
+      show.style.visibility='hidden';
+      let upate=document.getElementById('update');
+      upate.style.visibility='visible';
+     
+      let table=`<tr>
+                      <th>Name</th>
+                      <th>password</th>
+                      <th>email</th>
+                      <th>gender</th>
+                      <th>address</th>
+                      <th>number</th>
+                   </tr>`;
+        display1[0].innerHTML= table;
+       
+        table+=`<tr>
+        <td><input id='0' onkeyup='update(${index})' type='text'style='font-size:small;' value='${retrived[index]['Name']}'> </td>
+        <td><input id='1' onkeyup='update(${index})'  type='text' style='font-size:small;' value='${retrived[index]['password']}'></td>
+        <td><input id='2' onkeyup='update(${index})' type='text'style='font-size:small;' value='${retrived[index]['email']}'></td>
+        <th><input id='3' onkeyup='update(${index})' type='text'style='font-size:small;' value='${retrived[index]['gender']}'></td>
+        <td><input id='4' onkeyup='update(${index})' type='text'style='font-size:small;' value='${retrived[index]['address']}'></td>
+        <td><input id='5' onkeyup='update(${index})' type='text'style='font-size:small;' value='${retrived[index]['number']}'></td></tr>`;
+         display1[0].innerHTML=table;
         
-      let index='';
-      let regex=document.getElementById('searchbar').value;
-      console.log(regex);
-              for(let i = 0;i<retrived.length;i++){
-               //  if(retrived[i]['Name'].match(regex)){
-                     if(retrived[i]['Name']==regex){
-                    
-                    index=i;
-                      retrived.splice(index,1);}
-                // }
-                 
-                 localStorage.setItem("details",JSON.stringify(retrived));
-                 showdata();
-              }
-   }
+        
+       
+     }
+     //updating values in local storage...
+      function update(index){
+         
+         retrived[index]['Name']=document.getElementById('0').value;
+         retrived[index]['password']=document.getElementById('1').value;
+         retrived[index]['email']=document.getElementById('2').value;
+         retrived[index]['gender']=document.getElementById('3').value;
+         retrived[index]['address']=document.getElementById('4').value;
+         retrived[index]['number']=document.getElementById('5').value;
+         
+      }
+     
+     //displaying updated values on the screen...
+      function updatte(){
+      show.style.visibility='visible';
+      localStorage.setItem("details",JSON.stringify(retrived));
+      showdata();
+     }
