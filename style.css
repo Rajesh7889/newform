@@ -14,7 +14,7 @@ div#inner{
     margin:90px 30% 30%  30%;
     width:50%;
     height:20%;
-    background-color: rgba(0, 0, 0, 0.567);
+    background-color: rgba(0, 0, 0, 0.419);
     border-radius: 4px;
     box-shadow: 0px 0px 40px black;
 }
@@ -129,7 +129,7 @@ table{
 }
 
 td{
-    background-color: rgba(0, 0, 0, 0.329);
+    background-color: rgba(0, 0, 0, 0.31);
 
 }
 th{
@@ -149,4 +149,9 @@ input[type=button]:hover{
     border:1px black solid; 
     font-size: larger;
     background-color: red;
+}
+.navigate{
+    width: 33%;
+    margin: 5% 30%  5%  35%;
+    
 }
