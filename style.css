@@ -148,7 +148,7 @@ input[type=button]{
 input[type=button]:hover{
     border:1px black solid; 
     font-size: larger;
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.923);
 }
 .navigate{
     width: 33%;
