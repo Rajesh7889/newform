@@ -39,7 +39,7 @@
          submit.disabled=false; 
         }else {
           error=document.querySelectorAll('.error')[1];
-           error.innerHTML='*Give a strong password..';
+           error.innerHTML='*atleast one of each[A-Z,a-z,0-9,a secial character(length>8)]..';
            return false;
         }
     }
@@ -62,7 +62,7 @@
       let name=para[3].value;
       if(name.length<10){
          error=document.querySelectorAll('.error')[3];
-         error.innerHTML='*enter full address..';
+         error.innerHTML='*enter full address(length>10)..';
          return false;
       }else {
          error.innerHTML= '<br>';
@@ -120,15 +120,74 @@
      }
      //retriving the records from local storage...
      let retrived=JSON.parse(localStorage.getItem('details'));
+    
         let display=document.querySelectorAll('#show');
-     function showdata(){
+        //by default sorts according to name ...
+        function showdata(){
+         console.log(retrived);
+      retrived.sort(function(a,b){
+         if(a.Name.toLowerCase()<b.Name.toLowerCase()) return -1;
+         if(a.Name.toLowerCase()>b.Name.toLowerCase())return 1;
+         console.log(retrived);
+         return 0; 
+      })
+      showdatafn();
+      }
+
+
+      //sorts along passwords....
+       function showdata1(){
+         console.log(retrived);
+      retrived.sort(function(a,b){
+         if(a.password.toLowerCase()<b.password.toLowerCase()) return -1;
+         if(a.password.toLowerCase()>b.password.toLowerCase())return 1;
+         console.log(retrived);
+         return 0; 
+      })
+      showdatafn();
+      }
+
+      //sorts according to emails...
+       function showdata2(){
+         console.log(retrived);
+      retrived.sort(function(a,b){
+         if(a.email.toLowerCase()<b.email.toLowerCase()) return -1;
+         if(a.email.toLowerCase()>b.email.toLowerCase())return 1;
+         console.log(retrived);
+         return 0; 
+      })
+      showdatafn();
+      }
+
+      //sort according to address...
+       function showdata3(){
+         console.log(retrived);
+      retrived.sort(function(a,b){
+         if(a.address.toLowerCase()<b.address.toLowerCase()) return -1;
+         if(a.address.toLowerCase()>b.address.toLowerCase())return 1;
+         console.log(retrived);
+         return 0; 
+      })
+      showdatafn();
+      }
+        //shows sorted data according to mobile number..
+        function showdata4(){
+         console.log(retrived);
+      retrived.sort(function(a,b){ console.log(retrived);
+        return a.number-b.number;
+      })
+      showdatafn();
+        }
+
+        //displaying data....
+        function showdatafn(){
         let table=`<tr>
-                      <th>Name</th>
-                      <th>password</th>
-                      <th>email</th>
+                      <th>Name <input type='button' value='sort' onclick='showdata()'></th>
+                      <th>password <input type='button' value='sort' onclick='showdata1()'></th>
+                      <th>email <input type='button' value='sort' onclick='showdata2()'></th>
                       <th>gender</th>
-                      <th>address</th>
-                      <th>number</th>
+                      <th>address <input type='button' value='sort' onclick='showdata3()'></th>
+                      <th>number <input type='button' value='sort' onclick='showdata4()'></th>
                        <th>checked</th>
                        <th>operation</th>`;
         display[0].innerHTML= table;
